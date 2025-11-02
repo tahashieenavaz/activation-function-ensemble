@@ -18,4 +18,5 @@ def build_transforms(is_grayscale: bool = False) -> transforms.Compose:
         transforms.ToTensor(),
         transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD),
     ]
+
     return transforms.Compose(transform_list)
