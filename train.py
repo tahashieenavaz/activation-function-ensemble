@@ -5,7 +5,7 @@ from homa.ensemble import Ensemble
 from datasets import BG
 from datasets import AugmentedDataset
 
-dataset = BG()
+info = BG()
 for i in range(settings("size")):
     model = StochasticResnet(3)
     ensemble = Ensemble()
