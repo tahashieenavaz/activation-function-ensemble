@@ -1,6 +1,8 @@
 import mat73
 from scipy.io import loadmat
 from pathlib import Path
+from .classes import ImageDataset
+from .utils import build_transforms
 
 BASE_DATA_DIR = Path(__file__).parent.parent.parent / "datasets"
 
