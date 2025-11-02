@@ -2,7 +2,7 @@ import mat73
 from scipy.io import loadmat
 from pathlib import Path
 
-BASE_DATA_DIR = Path(__file__).parent.parent / "datasets"
+BASE_DATA_DIR = Path(__file__).parent.parent.parent / "datasets"
 
 
 def _load_scipy_dataset(filename: str) -> list:
