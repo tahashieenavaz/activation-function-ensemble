@@ -22,7 +22,7 @@ def _load_scipy_dataset(filename: str) -> list:
         "images": ImageDataset(images=images, labels=labels, transform=transform),
         "num_classes": len(set(labels)),
         "num_folds": folds,
-        "threshold": threshold,
+        "threshold": int(threshold),
     }
 
 
@@ -40,7 +40,7 @@ def _load_mat73_dataset(filename: str) -> list:
         "images": ImageDataset(images=images, labels=labels, transform=transform),
         "num_classes": len(set(labels)),
         "num_folds": folds,
-        "threshold": threshold,
+        "threshold": int(threshold),
     }
 
 
