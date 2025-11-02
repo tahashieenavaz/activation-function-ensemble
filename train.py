@@ -5,10 +5,10 @@ from homa.ensemble import Ensemble
 from datasets import BG
 from datasets import AugmentedDataset
 
-print(BG())
+dataset = BG()
 for i in range(settings("size")):
-    ensemble = Ensemble()
     model = StochasticResnet(3)
+    ensemble = Ensemble()
 
     for epoch in range(settings("epochs")):
         pass
