@@ -19,7 +19,7 @@ def _load_scipy_dataset(filename: str) -> list:
     transform = build_transforms(is_grayscale=is_grayscale)
 
     return {
-        "images": ImageDataset(images=images, labels=labels, transform=transform),
+        "dataset": ImageDataset(images=images, labels=labels, transform=transform),
         "num_classes": len(set(labels)),
         "folds": folds,
         "threshold": int(threshold),
@@ -37,7 +37,7 @@ def _load_mat73_dataset(filename: str) -> list:
     is_grayscale = len(images[0].shape) == 2
     transform = build_transforms(is_grayscale=is_grayscale)
     return {
-        "images": ImageDataset(images=images, labels=labels, transform=transform),
+        "dataset": ImageDataset(images=images, labels=labels, transform=transform),
         "num_classes": len(set(labels)),
         "folds": folds,
         "threshold": int(threshold),
