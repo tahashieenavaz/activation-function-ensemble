@@ -1,6 +1,6 @@
 import torch
 from homa import settings
-from homa.vision import Resnet
+from homa.vision import Resnet, StochasticResnet
 from homa.ensemble import Ensemble
 from types import SimpleNamespace
 from datasets import BG
@@ -22,7 +22,7 @@ for fold_idx, fold in enumerate(info.folds):
 
     print(f"fold: {fold_idx + 1}", flush=True)
     for i in range(settings("size")):
-        model = Resnet(num_classes=info.num_classes, lr=settings("lr"))
+        model = StochasticResnet(num_classes=info.num_classes, lr=settings("lr"))
         ensemble = Ensemble()
         for epoch in range(settings("epochs")):
             train_dataloader = torch.utils.data.DataLoader(
