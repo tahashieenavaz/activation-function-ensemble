@@ -21,8 +21,8 @@ for idx, fold in enumerate(info.folds):
     )
 
     for i in range(settings("size")):
-        model = Resnet(info.num_classes, lr=settings("lr"))
-        ensemble = Ensemble(Resnet)
+        model = Resnet(num_classes=info.num_classes, lr=settings("lr"))
+        ensemble = Ensemble()
         for epoch in range(settings("epochs")):
             pass
         ensemble.record(model)
