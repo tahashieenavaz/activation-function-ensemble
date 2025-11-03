@@ -7,7 +7,7 @@ from datasets import BG
 from datasets import AugmentedDataset
 
 info = SimpleNamespace(**BG())
-for idx, fold in enumerate(info.folds):
+for fold_idx, fold in enumerate(info.folds):
     fold = list(map(lambda x: x - 1, fold.astype(int)))
     train_idx = fold[: info.threshold]
     test_idx = fold[info.threshold :]
@@ -20,7 +20,7 @@ for idx, fold in enumerate(info.folds):
         test, shuffle=False, batch_size=settings("batch_size")
     )
 
-    print(f"fold: {fold + 1}", flush=True)
+    print(f"fold: {fold_idx + 1}", flush=True)
     for i in range(settings("size")):
         model = Resnet(num_classes=info.num_classes, lr=settings("lr"))
         ensemble = Ensemble()
