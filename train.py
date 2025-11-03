@@ -19,13 +19,14 @@ for idx, fold in enumerate(info.folds):
     test_dataloader = torch.utils.data.DataLoader(
         test, shuffle=False, batch_size=settings("batch_size")
     )
-    print(type(test_dataloader))
 
     for i in range(settings("size")):
         model = Resnet(num_classes=info.num_classes, lr=settings("lr"))
         ensemble = Ensemble()
         for epoch in range(settings("epochs")):
-            test_dataloader = torch.utils.data.DataLoader(
-                test, shuffle=True, batch_size=settings("batch_size")
+            train_dataloader = torch.utils.data.DataLoader(
+                train, shuffle=True, batch_size=settings("batch_size")
             )
+            model.train(train_dataloader)
+            print("here")
         ensemble.record(model)
