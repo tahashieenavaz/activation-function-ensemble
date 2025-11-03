@@ -20,6 +20,7 @@ for idx, fold in enumerate(info.folds):
         test, shuffle=False, batch_size=settings("batch_size")
     )
 
+    print(f"fold: {fold + 1}", flush=True)
     for i in range(settings("size")):
         model = Resnet(num_classes=info.num_classes, lr=settings("lr"))
         ensemble = Ensemble()
@@ -28,5 +29,6 @@ for idx, fold in enumerate(info.folds):
                 train, shuffle=True, batch_size=settings("batch_size")
             )
             model.train(train_dataloader)
-            print("here")
+            accuracy = model.accuracy(test_dataloader)
+            print(f"\tepoch: {epoch + 1}, accuracy: {accuracy}")
         ensemble.record(model)
