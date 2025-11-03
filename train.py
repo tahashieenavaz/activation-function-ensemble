@@ -1,6 +1,6 @@
 import torch
 from homa import settings
-from homa.models import Resnet
+from homa.vision import Resnet
 from homa.ensemble import Ensemble
 from types import SimpleNamespace
 from datasets import BG
@@ -14,8 +14,7 @@ for idx, fold in enumerate(info.folds):
     train = torch.utils.data.Subset(info.dataset, train_idx)
     test = torch.utils.data.Subset(info.dataset, test_idx)
     if len(train) < 5000:
-        augmented_train = AugmentedDataset(train)
-        train = torch.utils.data.ConcatDataset([train, augmented_train])
+        train = torch.utils.data.ConcatDataset([train, AugmentedDataset(train)])
 
     test_dataloader = torch.utils.data.DataLoader(
         test, shuffle=False, batch_size=settings("batch_size")
