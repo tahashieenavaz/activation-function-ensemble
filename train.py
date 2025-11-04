@@ -24,6 +24,7 @@ for fold_idx, fold in enumerate(info.folds):
     print(f"fold: {fold_idx + 1}", flush=True)
     ensemble = Ensemble()
     for i in range(settings("size")):
+        print(f"\tmodel: {i + 1}")
         model = StochasticResnet(num_classes=info.num_classes, lr=settings("lr"))
         best_model, best_accuracy = None, float("-inf")
         for epoch in range(settings("epochs")):
@@ -34,6 +35,6 @@ for fold_idx, fold in enumerate(info.folds):
             accuracy = model.accuracy(test_dataloader)
             if accuracy > best_accuracy:
                 best_model = deepcopy(model.network)
-            print(f"\tepoch: {epoch + 1}, accuracy: {accuracy}", flush=True)
+            print(f"\t\tepoch: {epoch + 1}, accuracy: {accuracy}", flush=True)
         ensemble.record(best_model)
     print(f"Ensemble accuracy: {ensemble.accuracy(test_dataloader)}")
