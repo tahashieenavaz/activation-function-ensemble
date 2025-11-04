@@ -37,6 +37,6 @@ for fold_idx, fold in enumerate(info.folds):
                 best_model = deepcopy(model.network)
                 best_accuracy = accuracy
             print(f"\t\tepoch: {epoch + 1}, accuracy: {accuracy}", flush=True)
-        print("\t\trecorder model accuracy: {best_accuracy}")
+        print(f"\t\trecorder model accuracy: {best_accuracy}")
         ensemble.record(best_model)
     print(f"Ensemble accuracy: {ensemble.accuracy(test_dataloader)}")
