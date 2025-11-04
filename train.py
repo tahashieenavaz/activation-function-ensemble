@@ -32,3 +32,4 @@ for fold_idx, fold in enumerate(info.folds):
             accuracy = model.accuracy(test_dataloader)
             print(f"\tepoch: {epoch + 1}, accuracy: {accuracy}", flush=True)
         ensemble.record(model)
+    print(f"Ensemble accuracy: {ensemble.accuracy(test_dataloader)}")
