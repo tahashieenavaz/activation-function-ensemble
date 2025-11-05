@@ -25,7 +25,7 @@ for fold_idx, fold in enumerate(info.folds):
     ensemble = Ensemble()
     for i in range(settings("size")):
         print(f"\tmodel: {i + 1}")
-        model = StochasticSwin(num_classes=info.num_classes, lr=settings("lr"))
+        model = StochasticSwin(num_classes=info.num_classes)
         best_model, best_accuracy = None, float("-inf")
         for epoch in range(settings("epochs")):
             train_dataloader = torch.utils.data.DataLoader(
