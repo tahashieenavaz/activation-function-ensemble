@@ -1,6 +1,6 @@
 import torch
 from homa import settings
-from homa.vision import Resnet, StochasticResnet
+from homa.vision import Resnet, StochasticResnet, Swin, StochasticSwin
 from homa.ensemble import Ensemble
 from copy import deepcopy
 from types import SimpleNamespace
@@ -25,7 +25,7 @@ for fold_idx, fold in enumerate(info.folds):
     ensemble = Ensemble()
     for i in range(settings("size")):
         print(f"\tmodel: {i + 1}")
-        model = StochasticResnet(num_classes=info.num_classes, lr=settings("lr"))
+        model = StochasticSwin(num_classes=info.num_classes, lr=settings("lr"))
         best_model, best_accuracy = None, float("-inf")
         for epoch in range(settings("epochs")):
             train_dataloader = torch.utils.data.DataLoader(
