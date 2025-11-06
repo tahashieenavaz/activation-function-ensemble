@@ -34,9 +34,10 @@ for fold_idx, fold in enumerate(info.folds):
             model.train(train_dataloader)
             accuracy = model.accuracy(test_dataloader)
             if accuracy > best_accuracy:
-                best_model = deepcopy(model.network)
+                best_model = deepcopy(model.network.state_dict())
                 best_accuracy = accuracy
             print(f"\t\tepoch: {epoch + 1}, accuracy: {accuracy}", flush=True)
         print(f"\t\trecorded model accuracy: {best_accuracy}")
-        ensemble.record(best_model)
+        model.network.load_state_dict(best_model)
+        ensemble.record(model.network)
     print(f"Ensemble accuracy: {ensemble.accuracy(test_dataloader)}")
