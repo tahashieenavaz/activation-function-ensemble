@@ -1,6 +1,6 @@
 import torch
 from homa import settings
-from homa.vision import Resnet, StochasticResnet, Swin, StochasticSwin
+from homa.vision import Swin, StochasticSwin
 from homa.ensemble import Ensemble
 from copy import deepcopy
 from types import SimpleNamespace
